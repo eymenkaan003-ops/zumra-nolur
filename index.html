@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Zümra Kitap Oyunu</title>
+<style>
+  body {
+    background-color: #111;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 150px;
+  }
+  h1 {
+    font-size: 28px;
+  }
+  button {
+    padding: 15px 30px;
+    font-size: 20px;
+    margin: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  #evet {
+    background-color: #28a745;
+    color: white;
+  }
+  #hayir {
+    background-color: #dc3545;
+    color: white;
+  }
+</style>
+</head>
+<body>
+  <h1>Zümra, kitabı verir misin?</h1>
+  <button id="evet">Evet</button>
+  <button id="hayir">Hayır</button>
+
+  <script>
+    const evet = document.getElementById("evet");
+    const hayir = document.getElementById("hayir");
+
+    let hayirBoyut = 1; // hayır butonunun küçülmesi için çarpan
+
+    hayir.addEventListener("click", () => {
+      hayirBoyut -= 0.2;
+      if (hayirBoyut <= 0) {
+        hayir.style.display = "none";
+      } else {
+        hayir.style.transform = `scale(${hayirBoyut})`;
+      }
+      // Evet büyüsün
+      const evetSize = parseFloat(window.getComputedStyle(evet).fontSize);
+      evet.style.fontSize = evetSize * 1.2 + "px";
+      evet.style.padding = "20px 40px";
+    });
+
+    evet.addEventListener("click", () => {
+      document.body.innerHTML = "<h1>Yaşasın! Çok sağ ol Zümra 😎📚</h1>";
+    });
+  </script>
+</body>
+</html>
